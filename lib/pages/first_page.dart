@@ -1,26 +1,88 @@
 import 'package:flutter/material.dart';
+import 'package:medico/pages/data_page.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
 
+  //cart function
+  Widget doctorscarts(String imagepath) {
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Container(
+        height: 250,
+        width: 100,
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 209, 206, 209),
+
+          borderRadius: BorderRadius.circular(12),
+          image: DecorationImage(
+            image: AssetImage(imagepath),
+            fit: BoxFit.cover,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: const Color.fromARGB(255, 174, 148, 246),
+              blurRadius: 20,
+              spreadRadius: 10,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.greenAccent,
-      bottomNavigationBar: BottomAppBar(height: 40),
-      appBar: AppBar(title: Center(child: Text("MEDICO"))),
+      backgroundColor: const Color.fromARGB(255, 141, 100, 222),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DataPage()),
+            );
+          }
+        },
+        backgroundColor: const Color.fromARGB(255, 210, 196, 233),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'HOME'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.accessibility_new),
+            label: 'DATA',
+          ),
+        ],
+      ),
+      appBar: AppBar(
+        title: Center(
+          child: Text("MEDICO", style: TextStyle(fontWeight: FontWeight.bold)),
+        ),
+        backgroundColor: const Color.fromARGB(255, 155, 124, 240),
+      ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 40),
             child: Container(
-              height: 400,
+              height: 350,
 
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 228, 222, 222),
+                gradient: LinearGradient(
+                  colors: [
+                    const Color.fromARGB(255, 165, 133, 253),
+                    const Color.fromARGB(255, 113, 93, 149),
+                  ],
+                ),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(50),
                 ),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color.fromARGB(255, 167, 137, 248),
+                    blurRadius: 20,
+                    spreadRadius: 10,
+                  ),
+                ],
               ),
 
               child: Column(
@@ -28,8 +90,8 @@ class FirstPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(25),
                     child: Text(
-                      "hi this is your MEDICO",
-                      style: TextStyle(fontSize: 50),
+                      "HI! this is your MEDICO",
+                      style: TextStyle(fontSize: 50, color: Colors.white),
                     ),
                   ),
 
@@ -37,7 +99,13 @@ class FirstPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(25),
                     child: TextField(
-                      decoration: InputDecoration(hintText: 'type your search'),
+                      decoration: InputDecoration(
+                        hintText: 'type your search',
+                        hintStyle: TextStyle(color: Colors.white),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -49,75 +117,23 @@ class FirstPage extends StatelessWidget {
           Align(
             alignment: AlignmentGeometry.topLeft,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Doctors List", style: TextStyle(fontSize: 20)),
+              padding: const EdgeInsets.all(25.0),
+              child: Text(
+                "Doctors List",
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
             ),
           ),
           Expanded(
             child: Center(
               child: ListView(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 250,
-                      width: 100,
-
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 221, 217, 221),
-                        borderRadius: BorderRadius.circular(12),
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/1.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 250,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 212, 209, 212),
-                        borderRadius: BorderRadius.circular(12),
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/1.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 250,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 209, 206, 209),
-                        borderRadius: BorderRadius.circular(12),
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/1.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 250,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 208, 206, 209),
-                        borderRadius: BorderRadius.circular(12),
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/1.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
+                  doctorscarts('assets/images/1.jpg'),
+                  doctorscarts('assets/images/2.jpg'),
+                  doctorscarts('assets/images/3.jpg'),
+                  doctorscarts('assets/images/4.jpg'),
+                  doctorscarts('assets/images/3.jpg'),
+                  doctorscarts('assets/images/2.jpg'),
                 ],
               ),
             ),
