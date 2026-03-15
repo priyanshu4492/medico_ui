@@ -40,7 +40,7 @@ class FirstPage extends StatelessWidget {
           if (index == 1) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => DataPage()),
+              MaterialPageRoute(builder: (context) => CartPage()),
             );
           }
         },
@@ -49,16 +49,11 @@ class FirstPage extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'HOME'),
           BottomNavigationBarItem(
             icon: Icon(Icons.accessibility_new),
-            label: 'DATA',
+            label: 'CART',
           ),
         ],
       ),
-      appBar: AppBar(
-        title: Center(
-          child: Text("MEDICO", style: TextStyle(fontWeight: FontWeight.bold)),
-        ),
-        backgroundColor: const Color.fromARGB(255, 155, 124, 240),
-      ),
+      
       body: Column(
         children: [
           Padding(
@@ -88,7 +83,7 @@ class FirstPage extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(25),
+                    padding: const EdgeInsets.all(35),
                     child: Text(
                       "HI! this is your MEDICO",
                       style: TextStyle(fontSize: 50, color: Colors.white),
@@ -117,7 +112,7 @@ class FirstPage extends StatelessWidget {
           Align(
             alignment: AlignmentGeometry.topLeft,
             child: Padding(
-              padding: const EdgeInsets.all(25.0),
+              padding: const EdgeInsets.only(left: 10,top: 40,bottom: 10),
               child: Text(
                 "Doctors List",
                 style: TextStyle(fontSize: 20, color: Colors.white),
